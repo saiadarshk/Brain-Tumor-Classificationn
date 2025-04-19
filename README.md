@@ -15,8 +15,13 @@ A total of 7023 images were used, split into 5712 training and 1311 testing samp
 
 Built and deployed a web-based interface using Flask, allowing users to upload MRI scans and receive real-time classification.
 
+📂 Access Project Files (Datasets, Trained Model, Flask App, Templates):
+Click here to access the project files
+
 Dataset Details
 Dataset Name: Brain Tumor MRI Dataset (Glioma vs Meningioma vs Pituitary vs Normal)
+![Uploading 68747470733a2f2f692e6962622e636f2f7348336732567a2f6274312e706e67.png…]()
+
 
 Number of Classes: 4
 
@@ -48,3 +53,4 @@ ResNet-50	67.96%	87.36%	65.54%	66.54%	0.87
 
 Conclusion
 This project presents a robust deep learning framework for brain tumor classification using MRI images. By leveraging Xception, a depthwise separable convolution model, we achieved high accuracy and minimized model loss. The implementation not only outperforms traditional architectures like ResNet-50 and VGG16 but also bridges the gap between clinical diagnosis and AI-assisted tools through a Flask-based web interface.
+
