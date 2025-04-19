@@ -1,0 +1,166 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        function showHome() {
+            document.getElementById('home-content').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showTumorDetection() {
+            document.getElementById('detect-now').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showUploadButtons() {
+            document.getElementById('upload-buttons').style.display = 'block';
+            document.getElementById('upload-button').style.display = 'block';
+        }
+
+        function triggerFileUpload() {
+            document.getElementById('file-upload').click();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('selected-image').src = e.target.result;
+                    document.getElementById('selected-image').style.display = 'block';
+                    document.getElementById('upload-predict-button').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</head>
+<body class="bg-blue-600 text-white font-sans">
+    <header class="flex justify-between items-center p-4 fixed top-0 left-0 right-0 bg-blue-600 z-10">
+        <div class="flex items-center">
+            <img src="https://storage.googleapis.com/a1aa/image/_V7OVcLPfjVrQQ4jFZI7dO2S7Y5l6PZ02HVap5M1Ybg.jpg" alt="Brain logo" class="h-12 w-12">
+            <h1 class="ml-2 text-2xl font-bold">Brain Tumor Detection</h1>
+        </div>
+        <nav class="space-x-4">
+            <a href="#" class="hover:underline" onclick="showHome()">Home</a>
+            <a href="#" class="hover:underline" onclick="showTumorDetection()">Tumor Detection</a>
+            <a href="about.html" class="hover:underline">About</a>
+            <a href="doctors.html" class="hover:underline">Doctors</a>
+            <a href="contact.html" class="hover:underline">Contact</a>
+        </nav>
+        <div class="relative">
+            <input type="text" placeholder="Search here" class="rounded-full px-4 py-1 text-black">
+            <i class="fas fa-search absolute right-3 top-2 text-black"></i>
+        </div>
+    </header>
+    <main id="home-content" class="text-left p-8 mt-16" style="display: block;">
+        <div class="mb-8"></div>
+        <h2 class="text-4xl font-bold mb-4">BRAIN TUMOR DETECTION</h2>
+        <div class="flex items-center mb-8">
+            <p class="mb-8 text-left text-xl">A Brain Tumor Diagnosis Can Be A Daunting Experience. That's Why We're Here To Provide You With Accurate Information And The Resources You Need To Make Informed Decisions About Your Health.</p>
+            <img src="https://storage.googleapis.com/a1aa/image/n5uJbdne3kiLhetxmxjcnvI1Bvvt-22hJnnAxrviOR4.jpg" alt="MRI scan of brain with tumor" class="h-64 w-64 ml-4">
+        </div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div id="detect-now" class="flex items-center justify-center mb-8 bg-blue-600 p-4 rounded-lg" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <img src="https://storage.googleapis.com/a1aa/image/eACPtP6PfCQzaXKK3FqN9-LlIUdGE1BOJXmVWLa4VNk.jpg" alt="Laptop with brain image on screen" class="h-80 w-80 mr-4">
+            <div class="text-left max-w-xs">
+                <p class="mb-4">"Don't Let Fear Or Denial Keep You From Getting A Brain Tumor Screening. Early Detection Can Save Your Life."</p>
+                <button class="bg-white text-blue-600 px-4 py-2 rounded-full" style="" onclick="showUploadButtons()">Detect Now</button>
+                <div id="upload-buttons" class="mt-4" style="display: none;">
+                    <input type="file" id="file-upload" accept="image/*" style="display: none;" onchange="handleFileUpload(event)">
+                </div>
+            </div>
+        </div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div class="mb-8"></div>
+        <div id="upload-button" class="text-center mt-8" style="display: none;">
+            <button class="bg-white text-blue-600 px-4 py-2 rounded-full" onclick="triggerFileUpload()">Click to Upload</button>
+        </div>
+        <div class="text-center mt-8">
+            <img id="selected-image" src="" alt="Selected image" class="h-64 w-64 mx-auto" style="display: none;">
+        </div>
+        <div id="upload-predict-button" class="text-center mt-8" style="display: none;">
+            <form action="/" method="post" enctype="multipart/form-data">
+                <input type="file" id="file-upload" name="file" accept="image/*" required>
+                <button type="submit" class="bg-white text-blue-600 px-4 py-2 rounded-full">Upload & Predict</button>
+            </form>
+        </div>
+    </main>
+    <section class="p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white text-black p-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Regular Case</h3>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-full mb-4">Precaution</button>
+                <ul class="list-disc list-inside">
+                    <li>Get regular check-ups</li>
+                    <li>Wear protective gear</li>
+                    <li>Avoid exposure to radiation</li>
+                    <li>Exercise regularly</li>
+                    <li>Manage stress</li>
+                    <li>Know the warning signs</li>
+                </ul>
+            </div>
+            <div class="bg-white text-black p-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Serious Case</h3>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-full mb-4">Precaution</button>
+                <ul class="list-disc list-inside">
+                    <li>Work with a team of specialists</li>
+                    <li>Follow your treatment plan</li>
+                    <li>Manage side effects</li>
+                    <li>Practice self-care</li>
+                    <li>Seek support</li>
+                    <li>Monitor your symptoms</li>
+                    <li>Consider clinical trials</li>
+                </ul>
+            </div>
+            <div class="bg-white text-black p-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Emergency Case</h3>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-full mb-4">Precaution</button>
+                <ul class="list-disc list-inside">
+                    <li>Call 911</li>
+                    <li>Stay calm</li>
+                    <li>Provide information</li>
+                    <li>Bring medical records</li>
+                    <li>Follow instructions</li>
+                    <li>Seek support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white text-black p-4 rounded-lg">
+                <img src="https://storage.googleapis.com/a1aa/image/kzKfW8AFJV77viRqY5S9stNM6JVG9CjFC6CjGuSROzM.jpg" alt="Doctor illustration" class="h-24 w-24 mx-auto mb-4">
+                <h3 class="text-xl font-bold mb-2">Dr. Roneet Yadav</h3>
+                <p class="font-semibold">Neurologist</p>
+                <p>A neurologist specializes in the diagnosis and treatment of disorders of the nervous system, including the brain.</p>
+            </div>
+            <div class="bg-white text-black p-4 rounded-lg">
+                <img src="https://storage.googleapis.com/a1aa/image/kzKfW8AFJV77viRqY5S9stNM6JVG9CjFC6CjGuSROzM.jpg" alt="Doctor illustration" class="h-24 w-24 mx-auto mb-4">
+                <h3 class="text-xl font-bold mb-2">Dr. Vikram Jadhav</h3>
+                <p class="font-semibold">Neurosurgeon</p>
+                <p>A neurosurgeon is a physician who specializes in surgery of the nervous system, including the brain. Neurosurgeons may perform surgeries to remove brain tumors.</p>
+            </div>
+            <div class="bg-white text-black p-4 rounded-lg">
+                <img src="https://storage.googleapis.com/a1aa/image/kzKfW8AFJV77viRqY5S9stNM6JVG9CjFC6CjGuSROzM.jpg" alt="Doctor illustration" class="h-24 w-24 mx-auto mb-4">
+                <h3 class="text-xl font-bold mb-2">Dr. Shriniwasan Iyer</h3>
+                <p class="font-semibold">Medical Oncologist</p>
+                <p>A medical oncologist is a doctor who specializes in the treatment of cancer using chemotherapy, immunotherapy, and targeted therapy.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="text-center p-4">
+        <p>&copy; 2023 Brain Tumor Detection. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        function showHome() {
+            document.getElementById('home-content').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showTumorDetection() {
+            document.getElementById('detect-now').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showUploadButtons() {
+            document.getElementById('upload-buttons').style.display = 'block';
+            document.getElementById('upload-button').style.display = 'block';
+        }
+
+        function triggerFileUpload() {
+            document.getElementById('file-upload').click();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('selected-image').src = e.target.result;
+                    document.getElementById('selected-image').style.display = 'block';
+                    document.getElementById('upload-predict-button').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function displayPrediction(event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('prediction-result').style.display = 'block';
+            document.getElementById('prediction-result').innerHTML = "Processing...";
+            
+            // Simulating a prediction response (Replace with actual backend response handling)
+            setTimeout(() => {
+                document.getElementById('prediction-result').innerHTML = "Prediction: Glioma Tumor Detected";
+            }, 2000);
+        }
+    </script>
+</head>
+<body class="bg-blue-600 text-white font-sans">
+    <header class="flex justify-between items-center p-4 fixed top-0 left-0 right-0 bg-blue-600 z-10">
+        <div class="flex items-center">
+            <h1 class="ml-2 text-2xl font-bold">Brain Tumor Detection</h1>
+        </div>
+    </header>
+    <main id="home-content" class="text-left p-8 mt-16" style="display: block;">
+        <div id="detect-now" class="text-center mt-8">
+            <button class="bg-white text-blue-600 px-4 py-2 rounded-full" onclick="showUploadButtons()">Detect Now</button>
+            <div id="upload-buttons" class="mt-4" style="display: none;">
+                <input type="file" id="file-upload" accept="image/*" style="display: none;" onchange="handleFileUpload(event)">
+            </div>
+        </div>
+        <div id="upload-button" class="text-center mt-8" style="display: none;">
+            <button class="bg-white text-blue-600 px-4 py-2 rounded-full" onclick="triggerFileUpload()">Click to Upload</button>
+        </div>
+        <div class="text-center mt-8">
+            <img id="selected-image" src="" alt="Selected image" class="h-64 w-64 mx-auto" style="display: none;">
+        </div>
+        <div id="upload-predict-button" class="text-center mt-8" style="display: none;">
+            <form onsubmit="displayPrediction(event)">
+                <button type="submit" class="bg-white text-blue-600 px-4 py-2 rounded-full">Upload & Predict</button>
+            </form>
+        </div>
+        <div id="prediction-result" class="text-center mt-8 text-xl font-bold" style="display: none;"></div>
+    </main>
+</body>
+</html>
